@@ -28,6 +28,7 @@ for i in range(len(dicionario['tesesDissertacoes'])):
                   dicionario['tesesDissertacoes'][i]['volumes'],
                   dicionario["tesesDissertacoes"][i]["link"]])
 
+
 with sqlite3.connect("tesesDissertacoes.db") as conexao:
     with closing(conexao.cursor()) as cursor:
         cursor.execute("""

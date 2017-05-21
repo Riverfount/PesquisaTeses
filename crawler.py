@@ -16,9 +16,15 @@ def fetch_page(page_number):
     payload = DATA.copy()
     payload['pagina'] = page_number
 
-    response = requests.post(URL, headers=HEADERS, data=json.dumps(payload))
-    if 200 <= response.status_code < 300:
-        return response.json()
+    while True:
+        response = requests.post(URL, headers = HEADERS, data = json.dumps(payload))
+
+        if 200 <= response.status_code < 300:
+            return response.json()
+            break
+        else:
+            print(response.status_code)
+            continue
 
 
 def get_total_pages(response):
@@ -46,4 +52,4 @@ if __name__ == '__main__':
         current += 1  # let's go to the next page (the while condition blocks a non-existent page)
         print(current, end = ' ')
 
-    print(output[0])
+    print(output[-1])

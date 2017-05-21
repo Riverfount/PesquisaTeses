@@ -21,7 +21,6 @@ def fetch_page(page_number):
 
         if 200 <= response.status_code < 300:
             return response.json()
-            break
         else:
             print(response.status_code)
             continue

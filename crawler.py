@@ -51,12 +51,12 @@ if __name__ == '__main__':
         current += 1  # let's go to the next page (the while condition blocks a non-existent page)
 
 
-    '''
     dados = []
     for saida in output:
-        dados.append((saida['id'], saida['instituicao'], saida['nomePrograma'], saida['municipioPrograma'],
-                      saida['titulo'], saida['autor'], saida['dataDefesa'], saida['volumes'], saida['paginas'],
-                      saida['biblioteca'], saida['grauAcademico'], saida['link']))
+        if saida not in dados:
+            dados.append((saida['id'], saida['instituicao'], saida['nomePrograma'], saida['municipioPrograma'],
+                          saida['titulo'], saida['autor'], saida['dataDefesa'], saida['volumes'], saida['paginas'],
+                          saida['biblioteca'], saida['grauAcademico'], saida['link']))
 
     with sqlite3.connect("tesesDissertacoes.db") as conexao:
         with closing(conexao.cursor()) as cursor:
@@ -73,4 +73,3 @@ if __name__ == '__main__':
 
             print("Base de dados criada e populada com sucesso!")
 
-    '''

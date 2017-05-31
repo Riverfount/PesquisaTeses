@@ -72,4 +72,3 @@ if __name__ == '__main__':
             conexao.commit()
 
             print("Base de dados criada e populada com sucesso!")
-

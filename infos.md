@@ -14,7 +14,7 @@
 
 **Accept**: application/json, text/plain, \*/\*  
 **Connection**: Keep-Alive  
-**Content-Type**: application/json;charset=UTF-8 
+**Content-Type**: application/json;charset=UTF-8   
 **Date**: Wed, 31 May 2017 18:45:30 GMT  
 **Keep-Alive**: timeout=5, max=200  
 **Transfer-Encoding**: chunked  

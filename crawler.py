@@ -3,6 +3,9 @@ from contextlib import closing
 import requests
 import json
 import sqlite3
+import time
+
+
 
 URL = 'http://bancodeteses.capes.gov.br/banco-teses/rest/busca'
 HEADERS = {'Content-type': 'application/json', 'Accept': 'text/plain'}

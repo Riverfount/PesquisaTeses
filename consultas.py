@@ -22,7 +22,7 @@ def consulta(campos, order='', group = ''):
 
 if __name__ == "__main__":
 
-    dados = consulta(campos = 'instituicao', group = 'instituicao')
+    dados = consulta(campos = 'programa', group = 'programa')
 
     for char in dados:
         if char == '|':

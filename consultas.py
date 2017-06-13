@@ -3,7 +3,6 @@ import sqlite3
 
 def consulta(campos, order='', group = ''):
 
-    lista_final = ''
     querystring = 'select ' + campos + ' from tesesDissertacoes'
     if order != '':
         querystring += ' order by ' + order
@@ -13,20 +12,14 @@ def consulta(campos, order='', group = ''):
 
     with sqlite3.connect("tesesDissertacoes.db") as conexao:
         for registro in conexao.execute(querystring):
-            lista_intermediaria = ''
-            for r in registro:
-                lista_intermediaria += r.lower() + '|'
-            lista_final += lista_intermediaria
-    return lista_final
+            print('{} --- {}'.format(registro[0], registro[1]))
 
 
 if __name__ == "__main__":
+    consulta(campos = 'id, instituicao', group = 'instituicao')
 
-    dados = consulta(campos = 'programa', group = 'programa')
-
-    for char in dados:
-        if char == '|':
-            print(';')
-            continue
-        else:
-            print(char, end = '')
+"""
+with sqlite3.connect("tesesDissertacoes.db") as conexao:
+     for registro in  conexao.execute('SELECT id, instituicao, programa FROM tesesDissertacoes ORDER BY id'):
+         print('{0[0]:<2}; {0[1]:<70}; {0[2]:<30}'.format(registro))
+"""

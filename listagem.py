@@ -1,22 +1,17 @@
 import sqlite3
 
 
-lista_final = []
-
 with sqlite3.connect("tesesDissertacoes.db") as conexao:
-    for registro in conexao.execute("""select instituicao, programa, autor_trabalho, 
+    for registro in conexao.execute("""select id, instituicao, programa, autor_trabalho, 
                                               titulo_trabalho, data_defesa, link 
                                       from tesesDissertacoes 
-                                      order by programa"""):
-        lista_intermediaria = []
-        for r in registro:
-            lista_intermediaria.append(r.lower())
-        lista_final.append(lista_intermediaria)
+                                      order by id"""):
 
-for item in lista_final:
-    print('; '.join(item))
+        print('{0[0]}'.format(registro))
+        # print('{0[1]}'.format(registro))
+        # print('{0[2]}'.format(registro))
+        # print('{0[3]}'.format(registro))
+        print('{0[4]}'.format(registro), '\n')
+        # print('{0[5]}'.format(registro))
+        # print('{0[6]}'.format(registro))
 
-with open('arquivoOutput.csv', 'w') as file:
-    file.writelines('instituicao; nomePrograma; autor; titulo; dataDefesa; link' + '\n')
-    for item in lista_final:
-        file.writelines('; '.join(item) + '\n')

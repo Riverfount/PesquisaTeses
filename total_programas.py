@@ -7,4 +7,4 @@ with sqlite3.connect("tesesDissertacoes.db") as conexao:
                                           FROM tesesDissertacoes
                                           GROUP BY programa"""):
 
-        print('{0[0]}; {0[1]}'.format(registro))
+        print(f'{registro[0]}; {registro[1]}')

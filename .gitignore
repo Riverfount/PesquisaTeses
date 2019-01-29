@@ -2,6 +2,5 @@
 __pycache__/
 *.pyc
 .pesquisateses/
-*.db
 test*.py
 tesesDissertacoes.db.bakcup

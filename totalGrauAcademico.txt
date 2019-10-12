@@ -1,7 +1,0 @@
-GRAU ACADÊMICO            QUANTIDADE
-DOUTORADO                        213
-MESTRADO                         560
-MESTRADO PROFISSIONAL             57
-PROFISSIONALIZANTE                39
-
-TOTAL                            869

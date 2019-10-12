@@ -1,8 +1,7 @@
 import sqlite3
 
 
-def consulta(campos, order='', group = ''):
-
+def consulta(campos, order='', group=''):
     querystring = 'select ' + campos + ' from tesesDissertacoes'
     if order != '':
         querystring += ' order by ' + order
@@ -16,7 +15,7 @@ def consulta(campos, order='', group = ''):
 
 
 if __name__ == "__main__":
-    consulta(campos = 'id, instituicao', group = 'instituicao')
+    consulta(campos='id, instituicao', group='instituicao')
 
 """
 with sqlite3.connect("tesesDissertacoes.db") as conexao:

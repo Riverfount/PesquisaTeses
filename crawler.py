@@ -3,18 +3,13 @@ from contextlib import closing
 import requests
 import json
 import sqlite3
-import time
 
 URL = 'http://catalogodeteses.capes.gov.br/catalogo-teses/rest/busca'
 HEADERS = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
-ano = [{"campo": "Ano", "valor": "2009"}, {"campo": "Ano", "valor": "2010"}, {"campo": "Ano", "valor": "2011"},
-       {"campo": "Ano", "valor": "2012"}, {"campo": "Ano", "valor": "2013"}, {"campo": "Ano", "valor": "2014"},
-       {"campo": "Ano", "valor": "2015"}, {"campo": "Ano", "valor": "2016"}, {"campo": "Ano", "valor": "2017"},
-       {"campo": "Ano", "valor": "2018"},
-       ]
+anos = [{"campo": "Ano", "valor": year} for year in range(2009, 2019)]
 
-DATA = {'termo': '"Epistemologia Genética" "Psicologia Genética" Piaget', 'registrosPorPágina': 20, 'filtros': ano}
+DATA = {'termo': '"Epistemologia Genética" "Psicologia Genética" Piaget', 'registrosPorPágina': 20, 'filtros': anos}
 
 
 def fetch_page(page_number):
@@ -62,9 +57,11 @@ if __name__ == '__main__':
 
 with sqlite3.connect("tesesDissertacoes.db") as conexao:
     with closing(conexao.cursor()) as cursor:
-        cursor.execute(""" CREATE TABLE tesesDissertacoes(id integer primary key autoincrement, codigo text, 
-           instituicao text, programa text, municipio text, titulo_trabalho text, autor_trabalho text, 
-           data_defesa text, num_volumes text, num_paginas text, biblioteca text, grau_academico text, link text)""")
+        cursor.execute(""" CREATE TABLE IF NOT EXISTS 
+                           tesesDissertacoes(id integer primary key autoincrement, codigo text,
+                           instituicao text, programa text, municipio text, titulo_trabalho text, autor_trabalho text,
+                           data_defesa text, num_volumes text, num_paginas text, biblioteca text, grau_academico text, 
+                           link text)""")
 
         cursor.executemany(""" INSERT INTO tesesDissertacoes(codigo, instituicao, programa, municipio, 
            titulo_trabalho, autor_trabalho, data_defesa, num_volumes, num_paginas, biblioteca, grau_academico, 

@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "pesquisateses"
+version = "0.1.0"
+description = "Projeto de Crawler que Pesquisa no Catálogo de Teses e Dissertações da CAPES"
+authors = ["Vicente Marçal <vicente.marcal@gmail.com>"]
+license = "GPLv3+"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.26.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

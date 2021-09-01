@@ -4,6 +4,7 @@ __pycache__/
 .pesquisateses/
 test*.py
 tesesDissertacoes.db.bakcup
+tesesDissertacoes.db
 *.txt
 *.csv
 
